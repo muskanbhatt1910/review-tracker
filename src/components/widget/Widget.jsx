@@ -122,9 +122,9 @@ export default class Widget extends Component {
 
     componentDidMount() {
         console.log("componenetDidMount():", this.props.selectedStores)
-        fetch("http://127.0.0.1:5000/", {
+        fetch("https://matrik.pythonanywhere.com/", {
             method: 'POST',
-            mode: 'cors',
+            mode: 'no-cors',
             body: JSON.stringify({
                 selectedStores: this.props.selectedStores,
                 // selectedStores: ['Acer PS','Acer TR'],
@@ -144,7 +144,7 @@ export default class Widget extends Component {
                 console.log(err.message);
             });
 
-        fetch("http://127.0.0.1:5000/pari_data")
+        fetch("https://matrik.pythonanywhere.com/pari_data")
             .then((response) => response.json())
             .then((data) => {
                 let results = []
@@ -165,7 +165,7 @@ export default class Widget extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.selectedStores !== this.props.selectedStores) {
             console.log("componenetDidUpdate(): if called", this.props.selectedStores)
-            fetch("http://127.0.0.1:5000/", {
+            fetch("https://matrik.pythonanywhere.com/", {
                 method: 'POST',
                 body: JSON.stringify({
                     selectedStores: this.props.selectedStores,

@@ -145,7 +145,7 @@ export default class Chart extends Component {
 
   componentDidMount() {
     console.log("chart mounted")
-    fetch("http://127.0.0.1:5000/pari_data")
+    fetch("https://matrik.pythonanywhere.com/pari_data",{mode: 'no-cors'})
       .then((response) => response.json())
       .then((data) => {
         let results = []

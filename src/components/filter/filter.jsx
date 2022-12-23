@@ -56,7 +56,7 @@
 // // const UpdatecolorOptions = () => {
 // //     useEffect(() => {
 // //         console.log("tomuuu");
-// //         fetch("http://127.0.0.1:5000/stores/")
+// //         fetch("https://matrik.pythonanywhere.com/stores/")
 // //            .then((response) => response.json())
 // //            .then((data) => {
 // //               console.log("Bhatt");
@@ -82,7 +82,7 @@
 //     // We get the store options in drop down
 //     // Won't need this again 
 //     useEffect(() => {
-//         fetch("http://127.0.0.1:5000/stores/")
+//         fetch("https://matrik.pythonanywhere.com/stores/")
 //             .then((response) => response.json())
 //             .then((data) => {
 //                 setstoreOptions(data);
@@ -165,7 +165,7 @@ export default class FilteredData extends Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:5000/stores")
+        fetch("https://matrik.pythonanywhere.com/stores")
             .then((response) => response.json())
             .then((data) => {
                 this.setState({
@@ -179,6 +179,7 @@ export default class FilteredData extends Component {
             })
             .catch((err) => {
                 console.log(err.message);
+                console.log("Error here!")
             });
         // console.log("Component Mounted")
         // console.log("this.state.storeOptions: ",this.state.storeOptions)
@@ -188,7 +189,7 @@ export default class FilteredData extends Component {
     }
 
     //     componentDidUpdate() {
-    //         fetch("http://127.0.0.1:5000/stores")
+    //         fetch("https://matrik.pythonanywhere.com/stores")
     //             .then((response) => response.json())
     //             .then((data) => {
     //                 console.log("Data from API");
@@ -291,7 +292,7 @@ export default class FilteredData extends Component {
                         value={this.state.optionSelected}
                     />
                 </span>
-                <Widget tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
+                {/* <Widget tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Chart tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Widget selectedStore={
                     () => {
