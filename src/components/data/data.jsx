@@ -6,7 +6,7 @@ const StoreData = () => {
     const [colourOptions, setcolourOptions] = useState([]);
     useEffect(() => {
         console.log("data jsx");
-        fetch("https://matrik.pythonanywhere.com/stores/")
+        fetch("https://matrik.pythonanywhere.com/stores/",{mode: 'no-cors'})
            .then((response) => response.json())
            .then((data) => {
               console.log("Bhatt data");

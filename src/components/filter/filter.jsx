@@ -165,7 +165,7 @@ export default class FilteredData extends Component {
     }
 
     componentDidMount() {
-        fetch("https://matrik.pythonanywhere.com/stores")
+        fetch("https://matrik.pythonanywhere.com/stores",{mode: 'no-cors'})
             .then((response) => response.json())
             .then((data) => {
                 this.setState({

@@ -144,22 +144,22 @@ export default class Widget extends Component {
                 console.log(err.message);
             });
 
-        fetch("https://matrik.pythonanywhere.com/pari_data")
-            .then((response) => response.json())
-            .then((data) => {
-                let results = []
-                data.forEach((row, index) => {
-                    let row_data = row;
-                    row_data["total_reviews_week"] = 10;
-                    results.push(row_data)
-                })
-                this.setState({
-                    pariData: results
-                });
-                this.setState({
-                    percentageData: this.getPercentageData(this.props.selectedStores)
-                });
-            });
+        // fetch("https://matrik.pythonanywhere.com/pari_data")
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         let results = []
+        //         data.forEach((row, index) => {
+        //             let row_data = row;
+        //             row_data["total_reviews_week"] = 10;
+        //             results.push(row_data)
+        //         })
+        //         this.setState({
+        //             pariData: results
+        //         });
+        //         this.setState({
+        //             percentageData: this.getPercentageData(this.props.selectedStores)
+        //         });
+        //     });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -167,6 +167,7 @@ export default class Widget extends Component {
             console.log("componenetDidUpdate(): if called", this.props.selectedStores)
             fetch("https://matrik.pythonanywhere.com/", {
                 method: 'POST',
+                mode: 'no-cors',
                 body: JSON.stringify({
                     selectedStores: this.props.selectedStores,
                 }),
@@ -254,7 +255,7 @@ export default class Widget extends Component {
                     })}
                 </div>
                 <div>
-                    <Chart tabSel={this.state.myTab} selectedStores={this.props.selectedStores} />
+                    {/* <Chart tabSel={this.state.myTab} selectedStores={this.props.selectedStores} /> */}
                 </div>
             </div>
         );
