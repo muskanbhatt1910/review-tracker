@@ -292,7 +292,7 @@ export default class FilteredData extends Component {
                         value={this.state.optionSelected}
                     />
                 </span>
-                {/* <Widget tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
+                <Widget tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
                 {/* <Chart tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Widget selectedStore={
                     () => {
