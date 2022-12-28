@@ -145,7 +145,7 @@ export default class Chart extends Component {
 
   componentDidMount() {
     console.log("chart mounted")
-    fetch("https://matrik.pythonanywhere.com/historical_data" )
+    fetch("https://matrik.pythonanywhere.com/historical_data/" )
       .then((response) => response.json())
       .then((data) => {
         let results = []
