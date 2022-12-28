@@ -124,7 +124,6 @@ export default class Widget extends Component {
         console.log("componenetDidMount():", this.props.selectedStores)
         fetch("https://matrik.pythonanywhere.com/", {
             method: 'POST',
-            mode: 'no-cors',
             body: JSON.stringify({
                 selectedStores: this.props.selectedStores,
                 // selectedStores: ['Acer PS','Acer TR'],
@@ -167,7 +166,6 @@ export default class Widget extends Component {
             console.log("componenetDidUpdate(): if called", this.props.selectedStores)
             fetch("https://matrik.pythonanywhere.com/", {
                 method: 'POST',
-                mode: 'no-cors',
                 body: JSON.stringify({
                     selectedStores: this.props.selectedStores,
                 }),

@@ -145,7 +145,7 @@ export default class Chart extends Component {
 
   componentDidMount() {
     console.log("chart mounted")
-    fetch("https://matrik.pythonanywhere.com/historical_data",{mode: 'no-cors'})
+    fetch("https://matrik.pythonanywhere.com/historical_data" )
       .then((response) => response.json())
       .then((data) => {
         let results = []
@@ -164,6 +164,7 @@ export default class Chart extends Component {
       })
       .catch((err) => {
         console.log(err.message);
+        console.log("Error in fetching hist. data!")
       });
   }
 

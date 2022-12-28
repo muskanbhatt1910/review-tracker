@@ -43,7 +43,7 @@ export default class FilteredData extends Component {
     }
 
     componentDidMount() {
-        fetch("https://matrik.pythonanywhere.com/stores",{mode: 'no-cors'})
+        fetch("https://matrik.pythonanywhere.com/stores" )
             .then((response) => response.json())
             .then((data) => {
                 this.setState({
@@ -57,7 +57,8 @@ export default class FilteredData extends Component {
             })
             .catch((err) => {
                 console.log(err.message);
-                console.log("Error here!")
+                console.log("Error here!");
+                console.log(err.message);
             });
         // console.log("Component Mounted")
         // console.log("this.state.storeOptions: ",this.state.storeOptions)
