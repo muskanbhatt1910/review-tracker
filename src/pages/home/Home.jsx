@@ -14,7 +14,7 @@ const Home = () => {
         <div className="homeContainer">
           <div className="charts">
             <FilteredData />
-            <Feature />
+            {/* <Feature /> */}
           </div>
           {/* <div className="charts">
             <Chart />

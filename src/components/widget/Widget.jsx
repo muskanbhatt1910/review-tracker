@@ -130,6 +130,7 @@ export default class Widget extends Component {
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
             },
         })
             .then((response) => response.json())
@@ -171,6 +172,7 @@ export default class Widget extends Component {
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
                 },
             })
                 .then((response) => response.json())
@@ -184,6 +186,7 @@ export default class Widget extends Component {
                 })
                 .catch((err) => {
                     console.log(err.message);
+                    console.log("widget not working")
                 });
         }
         else {
@@ -253,7 +256,7 @@ export default class Widget extends Component {
                     })}
                 </div>
                 <div>
-                    {/* <Chart tabSel={this.state.myTab} selectedStores={this.props.selectedStores} /> */}
+                    <Chart tabSel={this.state.myTab} selectedStores={this.props.selectedStores} />
                 </div>
             </div>
         );
