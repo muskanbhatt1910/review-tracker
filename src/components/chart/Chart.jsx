@@ -83,7 +83,7 @@ export default class Chart extends Component {
     super(props);
     this.state = {
       pariData: [
-        { store_name: "", week_number: "", total_rating: "", avg_rating_week: "", total_reviews: "" },
+        { store_name: "", week_number: "", total_rating: "", avg_rating_week: "", total_reviews: "" }, //total_reviews_week
       ],
       chartData: [],
       dataInitial: [],
@@ -145,7 +145,7 @@ export default class Chart extends Component {
 
   componentDidMount() {
     console.log("chart mounted")
-    fetch("https://matrik.pythonanywhere.com/pari_data",{mode: 'no-cors'})
+    fetch("https://matrik.pythonanywhere.com/historical_data",{mode: 'no-cors'})
       .then((response) => response.json())
       .then((data) => {
         let results = []
