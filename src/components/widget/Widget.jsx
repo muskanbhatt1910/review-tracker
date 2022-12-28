@@ -122,7 +122,7 @@ export default class Widget extends Component {
 
     componentDidMount() {
         console.log("componenetDidMount():", this.props.selectedStores)
-        fetch("https://matrik.pythonanywhere.com/", {
+        fetch("https://matrik.pythonanywhere.com/widget/", {
             method: 'POST',
             body: JSON.stringify({
                 selectedStores: this.props.selectedStores,
@@ -164,7 +164,7 @@ export default class Widget extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.selectedStores !== this.props.selectedStores) {
             console.log("componenetDidUpdate(): if called", this.props.selectedStores)
-            fetch("https://matrik.pythonanywhere.com/", {
+            fetch("https://matrik.pythonanywhere.com/widget/", {
                 method: 'POST',
                 body: JSON.stringify({
                     selectedStores: this.props.selectedStores,
