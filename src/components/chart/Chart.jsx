@@ -15,6 +15,8 @@ function getLabel(label){
   }
   return dict[label]
 }
+
+
 // const data = [
 //   { name: 'January', total: 1200 },
 //   { name: 'February', total: 3000 },
@@ -209,8 +211,21 @@ export default class Chart extends Component {
               <Area type="monotone" dataKey="total" stroke="#8884d8" fillOpacity={1} fill="url(#total)" />
           </AreaChart>                  */}
           <LineChart width={500} height={300} data={this.state.chartData} >
-            <XAxis dataKey="week_number" />
-            <YAxis />
+            <XAxis dataKey="week_number" label={{value: 'Week Number', dy:10}} />
+            <YAxis domain={(() => {
+              if(this.props.tabSel == "total_rating" || this.props.tabSel == "avg_rating_week") {
+                return [0,5]
+              }
+              else{
+                return [0,'auto']
+              }
+            })()}
+            tickCount={(() => {
+              if(this.props.tabSel == "total_rating" || this.props.tabSel == "avg_rating_week") {
+                return 6
+              }
+            })()}
+            />
             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
             <Line 
               type="monotone" 
@@ -220,6 +235,15 @@ export default class Chart extends Component {
               // })()} 
               dataKey={this.props.tabSel}
               stroke="#8884d8" 
+            />
+            <Tooltip 
+              formatter={function(value,name) {
+                return `${value}`;
+              }}
+              labelFormatter={function(value) {
+                return `Week: ${value}`;
+              }}
+              
             />
             {/* <Line type="monotone" dataKey="total_reviews" stroke="#82ca9d" /> */}
             {/* <Line type="monotone" dataKey="avg_rating_week" stroke="#82ca9d" /> */}

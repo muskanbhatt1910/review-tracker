@@ -18,7 +18,7 @@ const Sidebar = () => {
         <div className='top'>
           <span className='logo'>REVIEW TRACKER</span>
         </div>
-        <hr />
+        {/* <hr />
         <div className='center'>
           <ul>
             <p className="title">MAIN MENU</p>
@@ -79,7 +79,7 @@ const Sidebar = () => {
         <div className='bottom'>
           <div className='colorOptions'></div>
           <div className='colorOptions'></div>
-        </div>
+        </div> */}
     </div>
   )
 }
