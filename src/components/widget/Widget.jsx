@@ -16,7 +16,7 @@ export function globalFilterChartData(selectedStores, pariData) {
 
     console.log("Imma called here!")
 
-    let temp = pariData
+    let temp = JSON.parse(JSON.stringify(pariData))
     console.log("temp: ", temp)
     temp = temp.filter(o => selectedStores.includes(o.store_name))
     console.log("filterChartData selectedStores", selectedStores)
@@ -55,11 +55,15 @@ export function globalFilterChartData(selectedStores, pariData) {
     })
 
     chart_data.map((obj) => {
-        obj.total_rating = obj.total_rating / obj.total_reviews
-        obj.avg_rating_week = obj.avg_rating_week / obj.total_reviews_week
+        if (obj.total_reviews != 0) {
+            obj.total_rating = obj.total_rating / obj.total_reviews
+        }
+        if (obj.total_reviews_week != 0) {
+            obj.avg_rating_week = obj.avg_rating_week / obj.total_reviews_week
+        }
     })
 
-    console.log("chart data:", chart_data)
+    console.log("chart data:globalFilterChartData ", chart_data)
     chart_data = chart_data.sort((a, b) => a.week_number - b.week_number)
     return chart_data
 
@@ -96,6 +100,7 @@ export default class Widget extends Component {
             "avg_rating_week": 0,
             "total_reviews_week": 0
         }
+        console.log("tempPercentageData",tempPercentageData)
         if(chart_data.length>=2){
             console.log("chart_data.length>=2")
             console.log("chart_data:****", chart_data)
@@ -144,22 +149,22 @@ export default class Widget extends Component {
                 console.log(err.message);
             });
 
-        // fetch("https://matrik.pythonanywhere.com/pari_data")
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         let results = []
-        //         data.forEach((row, index) => {
-        //             let row_data = row;
-        //             row_data["total_reviews_week"] = 10;
-        //             results.push(row_data)
-        //         })
-        //         this.setState({
-        //             pariData: results
-        //         });
-        //         this.setState({
-        //             percentageData: this.getPercentageData(this.props.selectedStores)
-        //         });
-        //     });
+        fetch("https://matrik.pythonanywhere.com/historical_data/")
+            .then((response) => response.json())
+            .then((data) => {
+                let results = []
+                data.forEach((row, index) => {
+                    let row_data = row;
+                    // row_data["total_reviews_week"] = 10;
+                    results.push(row_data)
+                })
+                this.setState({
+                    pariData: results
+                });
+                this.setState({
+                    percentageData: this.getPercentageData(this.props.selectedStores)
+                });
+            });
     }
 
     componentDidUpdate(prevProps, prevState) {

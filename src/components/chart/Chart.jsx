@@ -81,8 +81,8 @@ export function SetSelectedTab(tab) {
 export default class Chart extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pariData: [
+    this.state = { 
+      pariDataChart: [
         { store_name: "", week_number: "", total_rating: "", avg_rating_week: "", total_reviews: "" }, //total_reviews_week
       ],
       chartData: [],
@@ -91,9 +91,10 @@ export default class Chart extends Component {
     }
     SetSelectedTab = SetSelectedTab.bind(this)
   }
-  //function that takes selected stores and filters pariData
+  //function that takes selected stores and filters pariDataChart
   filterChartData = (selectedStores) => {
-    let temp = this.state.pariData
+    // var temp = {...this.state.pariDataChart}
+    var temp = JSON.parse(JSON.stringify(this.state.pariDataChart))
     console.log("temp: ",temp)
     temp = temp.filter(o => selectedStores.includes(o.store_name))
     console.log("filterChartData selectedStores", selectedStores)
@@ -132,8 +133,12 @@ export default class Chart extends Component {
     })
 
     chart_data.map((obj) => {
-      obj.total_rating = obj.total_rating / obj.total_reviews
-      obj.avg_rating_week = obj.avg_rating_week / obj.total_reviews_week
+      if(obj.total_reviews != 0){
+        obj.total_rating = obj.total_rating / obj.total_reviews
+      }
+      if(obj.total_reviews_week != 0){
+        obj.avg_rating_week = obj.avg_rating_week / obj.total_reviews_week
+      }
     })
 
     console.log("chart data:", chart_data)
@@ -151,11 +156,11 @@ export default class Chart extends Component {
         let results = []
         data.forEach((row, index) => {
           let row_data = row;
-          row_data["total_reviews_week"] = 10;
+          // row_data["total_reviews_week"] = 10;
           results.push(row_data)
         })
         this.setState({
-          pariData: results
+          pariDataChart: results
         });
         this.setState({
           chartData: this.filterChartData(this.props.selectedStores)
