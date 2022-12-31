@@ -32,7 +32,7 @@ export default class NameFilter extends React.Component {
         let retVal
         console.log("Handle change called and value is :", value)
         if (event.action === "select-option" && event.option.value === "*") {
-            console.log("this.props.storeOptions",this.props.storeOptions)
+            console.log("this.props.storeOptions", this.props.storeOptions)
             retVal = [{ label: "All", value: "*" }, ...this.props.storeOptions]
             this.setState({
                 optionSelected: [...this.props.storeOptions]
@@ -60,7 +60,7 @@ export default class NameFilter extends React.Component {
                     optionSelected: value.filter(o => o.value !== "*")
                 });
             }
-        } else if ((value.filter(o => o.value !== "*")).length === this.props.storeOptions.length-1) {
+        } else if ((value.filter(o => o.value !== "*")).length === this.props.storeOptions.length - 1) {
             retVal = [{ label: "All", value: "*" }, ...this.props.storeOptions]
             this.setState({
                 optionSelected: [...this.props.storeOptions]
@@ -75,11 +75,29 @@ export default class NameFilter extends React.Component {
         this.props.setnameFilterValue(retVal)
     };
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
-            storeOptions: this.props.storeOptions
+            storeOptions: this.props.storeOptions,
+            optionSelected: this.props.storeOptions
         });
+        console.log("nameFilter mounted!")
+        console.log("this.props.storeOptions", this.props.storeOptions)
+        console.log("optionSelected", this.state.optionSelected)
     }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.optionSelected !== this.state.optionSelected) {
+    //         console.log("nameFilter updated!")
+    //         console.log("this.props.storeOptions", this.props.storeOptions)
+    //         console.log("optionSelected", this.state.optionSelected)
+    //         this.setState({
+    //             storeOptions: this.props.storeOptions,
+    //             optionSelected: this.props.storeOptions
+    //         });
+    //         // console.log("nameFilter updated!")
+    //         // console.log("this.props.storeOptions", this.props.storeOptions)
+    //         // console.log("optionSelected", this.state.optionSelected)
+    //     }
+    // }
 
     render() {
 
@@ -103,7 +121,7 @@ export default class NameFilter extends React.Component {
                         allowSelectAll={true}
                         value={this.state.optionSelected}
                         placeholder="Select Store"
-                        
+
                     />
                 </span>
             </div>

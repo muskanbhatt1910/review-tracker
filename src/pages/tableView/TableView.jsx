@@ -5,7 +5,31 @@ import WeekFilter from '../../components/table/weekFilter/weekFilter'
 import FilterTable from '../../components/table/table'
 import './tableView.scss'
 import Sidebar from "../../components/sidebar/Sidebar";
+import { useState, useEffect } from 'react';
 
+const Spinner = () => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+      setLoading(true);
+      setTimeout(() => {
+          setLoading(false);
+      }, 8000);
+  }, []);
+
+  return (
+      <div>
+          {loading ?
+              <span className="container">
+                  <div className="loader-container">
+                      <div className="spinner"></div>
+                  </div>
+              </span>
+              :
+              null
+          }
+      </div>
+  );
+};
 
 export default class TableView extends React.Component {
   constructor(props) {
@@ -73,7 +97,7 @@ export default class TableView extends React.Component {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          
+          <Spinner />
             <div className="rowC">
               <NameFilter setnameFilterValue={this.setnameFilterValue} storeOptions={this.state.storeOptions} />
               <WeekFilter setweekFilterValue={this.setweekFilterValue} weekList={this.state.weekList} />

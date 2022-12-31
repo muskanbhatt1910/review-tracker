@@ -42,7 +42,7 @@ export default class WeekFilter extends React.Component {
                     data-content="Please selecet account(s)"
                 >
                     <ReactSelect 
-                        options={convertToLabelValueFormat(this.props.weekList)} 
+                        options={[{ label: "All", value: "*" },...convertToLabelValueFormat(this.props.weekList)]} 
                         onChange={this.handleChange}
                         value={this.state.weekSelected}
                         placeholder="Select Week"
