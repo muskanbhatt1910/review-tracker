@@ -103,6 +103,7 @@ export default class NameFilter extends React.Component {
                         allowSelectAll={true}
                         value={this.state.optionSelected}
                         placeholder="Select Store"
+                        
                     />
                 </span>
             </div>

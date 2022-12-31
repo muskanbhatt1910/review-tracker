@@ -96,6 +96,39 @@ export default class FilterTable extends React.Component {
               )
             })
           })() } */}
+          {/* {(()=>{
+            console.log("I am called here!")
+            console.log("this.props.nameFilterValue",this.props.nameFilterValue)
+            console.log("this.props.weekFilterValue",this.props.weekFilterValue)
+            if((!this.props.nameFilterValue || this.props.nameFilterValue.length<=0) && (!this.props.weekFilterValue || this.props.weekFilterValue.length <=0)){
+              console.log("Entered here!")
+              console.log("historicalData", this.props.historicalData)
+              this.props.historicalData.map((data,index) => {
+                return (
+                  <tr>
+                      <td>{index + 1}</td>
+                      <td>{data.week_number}</td>
+                      <td>{data.store_name}</td>
+                      <td>{data.avg_rating_week.toFixed(2)}</td>
+                      <td>{data.total_reviews_week}</td>
+                    </tr>
+                );
+              })
+            }
+            else{
+              this.props.historicalData.filter(row => this.getStores(this.props.nameFilterValue).includes(row.store_name)).filter(row => this.getWeeks(this.props.weekFilterValue).includes(row.week_number)).map((data,index) => {
+                return (
+                  <tr>
+                      <td>{index + 1}</td>
+                      <td>{data.week_number}</td>
+                      <td>{data.store_name}</td>
+                      <td>{data.avg_rating_week.toFixed(2)}</td>
+                      <td>{data.total_reviews_week}</td>
+                    </tr>
+                );
+              })
+            }
+          })()} */}
           {this.props.historicalData.filter(row => this.getStores(this.props.nameFilterValue).includes(row.store_name)).filter(row => this.getWeeks(this.props.weekFilterValue).includes(row.week_number)).map((data,index) => {
             return (
               <tr>

@@ -5,7 +5,32 @@ import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
 import Chart from "../chart/Chart.jsx";
 import Widget from "../widget/Widget.jsx";
+import './filter.scss';
+import { useState, useEffect } from 'react';
 
+const Spinner = () => {
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 8000);
+    }, []);
+
+    return (
+        <div>
+            {loading ?
+                <span className="container">
+                    <div className="loader-container">
+                        <div className="spinner"></div>
+                    </div>
+                </span>
+                :
+                null
+            }
+        </div>
+    );
+};
 
 const Option = (props) => {
     return (
@@ -22,7 +47,7 @@ const Option = (props) => {
     );
 };
 
-export function setTabSel(tab){
+export function setTabSel(tab) {
     // this.setState({
     //     tabSel: tab
     // });
@@ -42,17 +67,17 @@ export default class FilteredData extends Component {
     }
 
     componentDidMount() {
-        fetch("https://matrik.pythonanywhere.com/stores/" )
+        fetch("https://matrik.pythonanywhere.com/stores/")
             .then((response) => response.json())
             .then((data) => {
                 this.setState({
                     storeOptions: data
                 });
-                console.log("Store Options: ",this.state.storeOptions);
+                console.log("Store Options: ", this.state.storeOptions);
                 this.setState({
                     optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
                 });
-                
+
             })
             .catch((err) => {
                 console.log(err.message);
@@ -114,7 +139,7 @@ export default class FilteredData extends Component {
                 optionSelected: value.filter(o => o.value !== "*")
             });
         } else if (event.action === "remove-value") {
-            if(event.removedValue.value === "*"){
+            if (event.removedValue.value === "*") {
                 this.setState({
                     optionSelected: []
                 });
@@ -123,7 +148,7 @@ export default class FilteredData extends Component {
                 this.setState({
                     optionSelected: value.filter(o => o.value !== "*")
                 });
-            }             
+            }
         } else if ((value.filter(o => o.value !== "*")).length === this.state.storeOptions.length) {
             this.setState({
                 optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
@@ -137,27 +162,35 @@ export default class FilteredData extends Component {
 
     convertStoresFormat = (optionSelectedLabelValue) => {
         let selectedStoreList = null
-        if (optionSelectedLabelValue){
+        if (optionSelectedLabelValue) {
             selectedStoreList = optionSelectedLabelValue.map((store) => store['value']);
         }
-        
+
         console.log("this.state.optionSelected: ", optionSelectedLabelValue)
         console.log("selectedStoreList: ", selectedStoreList)
         return selectedStoreList
     }
     // ChartNew = new Chart();
     render() {
-        
+
         return (
             <div>
+                {/* <span className="container">
+                    <div className="loader-container">
+                        <div className="spinner"></div>
+                    </div>
+                </span> */}
+                <Spinner />
+
                 <span
                     class="d-inline-block"
                     data-toggle="popover"
                     data-trigger="focus"
                     data-content="Please selecet account(s)"
                 >
+
                     <ReactSelect
-                        options={[{label: "All", value: "*"}, ...this.state.storeOptions]}
+                        options={[{ label: "All", value: "*" }, ...this.state.storeOptions]}
                         // options={this.state.storeOptions}
                         isMulti
                         closeMenuOnSelect={false}
@@ -170,7 +203,7 @@ export default class FilteredData extends Component {
                         value={this.state.optionSelected}
                     />
                 </span>
-                <Widget tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
+                <Widget tabSel={this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
                 {/* <Chart tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Widget selectedStore={
                     () => {

@@ -46,6 +46,7 @@ export default class WeekFilter extends React.Component {
                         onChange={this.handleChange}
                         value={this.state.weekSelected}
                         placeholder="Select Week"
+                        // defaultInputValue={"52"}
                     />
                 </span>
             </div>
