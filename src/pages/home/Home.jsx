@@ -14,9 +14,9 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <div className="charts">
-          {/* <FilteredData /> */}
+          <FilteredData />
           {/* <Feature /> */}
-          <TableView />
+          {/* <TableView /> */}
         </div>
         {/* <div className="charts">
             <Chart />

@@ -26,15 +26,15 @@ const Sidebar = () => {
         </div>
         <Navbar expand="lg" bg="light">
             <Container>
-              <Navbar.Brand href="#home">Select View:</Navbar.Brand>
+              {/* <Navbar.Brand href="#home">Select View:</Navbar.Brand> */}
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="#home">
-                    <Button variant="primary">CHART</Button>{' '}
+                  <Nav.Link href="/">
+                    <Button variant="primary">CHART VIEW</Button>{' '}
                   </Nav.Link>
-                  <Nav.Link href="#link">
-                    <Button variant="primary">TABLE</Button>{' '}
+                  <Nav.Link href="tableview">
+                    <Button variant="primary">TABLE VIEW</Button>{' '}
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>

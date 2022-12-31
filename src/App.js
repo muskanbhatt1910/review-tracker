@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/home/Home";
+import TableView from "./pages/tableView/TableView";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
+            <Route path="tableview" element={<TableView />} />
             <Route path="login" element={<Login />} />
             <Route path="users">
               <Route index element={<List />} />

@@ -4,6 +4,7 @@ import NameFilter from '../../components/table/nameFilter/nameFilter'
 import WeekFilter from '../../components/table/weekFilter/weekFilter'
 import FilterTable from '../../components/table/table'
 import './tableView.scss'
+import Sidebar from "../../components/sidebar/Sidebar";
 
 
 export default class TableView extends React.Component {
@@ -69,13 +70,18 @@ export default class TableView extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="rowC">
-            <NameFilter setnameFilterValue={this.setnameFilterValue} storeOptions={this.state.storeOptions} />
-            <WeekFilter setweekFilterValue={this.setweekFilterValue} weekList={this.state.weekList} />
+      <div className="home">
+        <Sidebar />
+        <div className="homeContainer">
+          
+            <div className="rowC">
+              <NameFilter setnameFilterValue={this.setnameFilterValue} storeOptions={this.state.storeOptions} />
+              <WeekFilter setweekFilterValue={this.setweekFilterValue} weekList={this.state.weekList} />
+            </div>
+            <FilterTable weekFilterValue={this.state.weekFilterValue} nameFilterValue={this.state.nameFilterValue} historicalData={this.state.historicalData} />
+          </div>
         </div>
-        <FilterTable weekFilterValue={this.state.weekFilterValue} nameFilterValue={this.state.nameFilterValue} historicalData={this.state.historicalData} />
-      </div>
+      
     )
   }
 }
