@@ -11,6 +11,12 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Sidebar = () => {
   return (
@@ -18,6 +24,22 @@ const Sidebar = () => {
         <div className='top'>
           <span className='logo'>REVIEW TRACKER</span>
         </div>
+        <Navbar expand="lg" bg="light">
+            <Container>
+              <Navbar.Brand href="#home">Select View:</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link href="#home">
+                    <Button variant="primary">CHART</Button>{' '}
+                  </Nav.Link>
+                  <Nav.Link href="#link">
+                    <Button variant="primary">TABLE</Button>{' '}
+                  </Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
         {/* <hr />
         <div className='center'>
           <ul>

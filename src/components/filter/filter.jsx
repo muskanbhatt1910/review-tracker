@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import { colourOptions } from "./data.js";
 import { default as ReactSelect } from "react-select";
-// import "./styles.css";
 import { components } from "react-select";
 import Chart from "../chart/Chart.jsx";
 import Widget from "../widget/Widget.jsx";
