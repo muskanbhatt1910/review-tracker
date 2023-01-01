@@ -13,7 +13,7 @@ const Spinner = () => {
       setLoading(true);
       setTimeout(() => {
           setLoading(false);
-      }, 3000);
+      }, 1500);
   }, []);
 
   return (

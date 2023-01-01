@@ -14,7 +14,7 @@ const Spinner = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 1500);
     }, []);
 
     return (
@@ -201,6 +201,7 @@ export default class FilteredData extends Component {
                         onChange={this.handleChange}
                         allowSelectAll={true}
                         value={this.state.optionSelected}
+                        defa
                     />
                 </span>
                 <Widget tabSel={this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
