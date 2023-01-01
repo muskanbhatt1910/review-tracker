@@ -13,7 +13,7 @@ const Spinner = () => {
       setLoading(true);
       setTimeout(() => {
           setLoading(false);
-      }, 8000);
+      }, 3000);
   }, []);
 
   return (
@@ -66,7 +66,7 @@ export default class TableView extends React.Component {
         });
       })
       .catch((err) => {
-        console.log(err.message);
+        // console.log(err.message);
       });
 
     fetch("https://matrik.pythonanywhere.com/historical_data/")
@@ -85,11 +85,11 @@ export default class TableView extends React.Component {
 
       })
       .catch((err) => {
-        console.log(err.message);
+        // console.log(err.message);
       });
   }
   componentDidUpdate() {
-    console.log("Table element state updated! weekFilterValue", this.state.weekFilterValue)
+    // console.log("Table element state updated! weekFilterValue", this.state.weekFilterValue)
   }
 
   render() {

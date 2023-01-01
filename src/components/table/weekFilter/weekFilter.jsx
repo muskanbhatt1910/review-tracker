@@ -24,7 +24,7 @@ export default class WeekFilter extends React.Component {
     }
 
     handleChange = (value) => {
-        console.log("Value selected in dropdown", value)
+        // console.log("Value selected in dropdown", value)
         this.props.setweekFilterValue(value)
         this.setState({
             weekSelected: value

@@ -14,7 +14,7 @@ const Spinner = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 8000);
+        }, 3000);
     }, []);
 
     return (
@@ -73,19 +73,19 @@ export default class FilteredData extends Component {
                 this.setState({
                     storeOptions: data
                 });
-                console.log("Store Options: ", this.state.storeOptions);
+                // // console.log("Store Options: ", this.state.storeOptions);
                 this.setState({
                     optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
                 });
 
             })
             .catch((err) => {
-                console.log(err.message);
-                console.log("Error here!");
-                console.log(err.message);
+                // // console.log(err.message);
+                // // console.log("Error here!");
+                // // console.log(err.message);
             });
-        // console.log("Component Mounted")
-        // console.log("this.state.storeOptions: ",this.state.storeOptions)
+        // // // console.log("Component Mounted")
+        // // // console.log("this.state.storeOptions: ",this.state.storeOptions)
         // this.setState({
         //     optionSelected: this.state.storeOptions
         // });
@@ -95,22 +95,22 @@ export default class FilteredData extends Component {
     //         fetch("https://matrik.pythonanywhere.com/stores")
     //             .then((response) => response.json())
     //             .then((data) => {
-    //                 console.log("Data from API");
-    //                 console.log(data);
+    //                 // // console.log("Data from API");
+    //                 // // console.log(data);
     //                 this.setState({
     //                     storeOptions: data
     //                 });
-    //                 console.log("Stoe Options");
-    //                 console.log(this.state.storeOptions);
+    //                 // // console.log("Stoe Options");
+    //                 // // console.log(this.state.storeOptions);
     //             })
     //             .catch((err) => {
-    //                 console.log(err.message);
+    //                 // // console.log(err.message);
     //             });
     // }
 
     handleChange = (value, event) => {
-        console.log("event action: ", event)
-        console.log("value: ", value)
+        // // console.log("event action: ", event)
+        // // console.log("value: ", value)
         // this.setState({
         //     optionSelected: selected
         // });
@@ -125,7 +125,7 @@ export default class FilteredData extends Component {
         //     });
         // }
         // this.state.optionSelected = selected
-        // console.log("this.state.optionSelected-HandleChange: ",this.state.optionSelected)
+        // // // console.log("this.state.optionSelected-HandleChange: ",this.state.optionSelected)
         if (event.action === "select-option" && event.option.value === "*") {
             this.setState({
                 optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
@@ -166,8 +166,8 @@ export default class FilteredData extends Component {
             selectedStoreList = optionSelectedLabelValue.map((store) => store['value']);
         }
 
-        console.log("this.state.optionSelected: ", optionSelectedLabelValue)
-        console.log("selectedStoreList: ", selectedStoreList)
+        // // console.log("this.state.optionSelected: ", optionSelectedLabelValue)
+        // // console.log("selectedStoreList: ", selectedStoreList)
         return selectedStoreList
     }
     // ChartNew = new Chart();
@@ -208,8 +208,8 @@ export default class FilteredData extends Component {
                 {/* <Widget selectedStore={
                     () => {
                         let selectedStoreList = this.state.optionSelected.map((store) => store['value']);
-                        console.log("this.state.optionSelected: ", this.state.optionSelected)
-                        console.log("selectedStoreList: ", selectedStoreList)
+                        // // console.log("this.state.optionSelected: ", this.state.optionSelected)
+                        // // console.log("selectedStoreList: ", selectedStoreList)
                         return selectedStoreList
                     }
                 } /> */}
