@@ -14,8 +14,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route path="home" element={<Home />} />
-          <Route path="tableview" element={<TableView />} />
+            <Route index element={<Home />} />
+            <Route path="tableview">
+              <Route index element={<TableView />} />
+            </Route>
+            {/* <Route path="tableview" element={<TableView />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="users">
               <Route index element={<List />} />
