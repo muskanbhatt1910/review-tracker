@@ -2,10 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/home/Home";
 import TableView from "./pages/tableView/TableView";
+import ReviewsView from "./pages/reviewsView/ReviewsView";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import DateSelector from './components/reviews/reviews';
 
 
 function App() {
@@ -17,6 +19,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="tableview">
               <Route index element={<TableView />} />
+            </Route>
+            <Route path="reviewsview">
+              <Route index element={<ReviewsView />} />
             </Route>
             {/* <Route path="tableview" element={<TableView />} /> */}
             <Route path="login" element={<Login />} />

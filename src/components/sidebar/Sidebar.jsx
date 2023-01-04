@@ -36,6 +36,9 @@ const Sidebar = () => {
                   <Nav.Link href="tableview">
                     <Button variant="primary">TABLE VIEW</Button>{' '}
                   </Nav.Link>
+                  <Nav.Link href="reviewsview">
+                    <Button variant="primary">REVIEWS</Button>{' '}
+                  </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
