@@ -10,6 +10,9 @@ import { default as ReactSelect } from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import { mockComponent } from "react-dom/test-utils";
+import Moment from 'react-moment';
+import moment from "moment";
 
 const Spinner = (props) => {
     const [loading, setLoading] = useState(false);
@@ -85,18 +88,20 @@ class DateFilter extends React.Component {
 
     render() {
         return (
-            <div>
-                <DatePicker
-                    selected={this.state.toDate}
-                    onChange={this.handleChangeTodate}
-                    isClearable
-                    placeholderText="Select End Date"
-                />
+            <div className="datepicker">
                 <DatePicker
                     selected={this.state.fromDate}
+                    dateFormat='dd/MM/yyyy'
                     onChange={this.handleChangeFromdate}
                     isClearable
                     placeholderText="Select Start Date"
+                />
+                <DatePicker
+                    selected={this.state.toDate}
+                    dateFormat='dd/MM/yyyy'
+                    onChange={this.handleChangeTodate}
+                    isClearable
+                    placeholderText="Select End Date"
                 />
             </div>
         );
@@ -107,7 +112,7 @@ class StoreFilter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            storeSelected: "Acer PS"
+            storeSelected: {label: "Acer PS", value: "Acer PS"}
         };
     }
 
@@ -130,9 +135,9 @@ class StoreFilter extends React.Component {
                     <ReactSelect
                         options={this.props.storeOptions}
                         onChange={this.handleChange}
-                        defaultValue="Acer PS"
+                        // defaultValue="Acer PS"
                         value={this.state.storeSelected}
-                        placeholder="Select Store"
+                        // placeholder="Select Store"
                     />
                 </span>
             </div>
@@ -144,7 +149,7 @@ class RatingFilter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            ratingSelected: 5,
+            ratingSelected: { label: 5, value: 5 },
             ratingOptions: [
                 { label: 5, value: 5 },
                 { label: 4, value: 4 },
@@ -174,9 +179,9 @@ class RatingFilter extends React.Component {
                     <ReactSelect
                         options={this.state.ratingOptions}
                         onChange={this.handleChange}
-                        defaultValue={5}
+                        // defaultValue={5}
                         value={this.state.ratingSelected}
-                        placeholder="Select Rating"
+                        // placeholder="Select Rating"
                     />
                 </span>
             </div>
@@ -204,8 +209,85 @@ class FilterTable extends React.Component {
                 </thead>
                 <tbody>
                     {(() => {
-                        console.log("FIlterTable called: this.props.reviewsData",this.props.reviewsData)
-                        let results = this.props.reviewsData.filter(review => review.rating == this.props.ratingFilterValue)
+                        // console.log("FIlterTable called: this.props.reviewsData",this.props.reviewsData)
+                        const moment = require('moment');
+                        let results = this.props.reviewsData
+                        if(this.props.ratingFilterValue){
+                            console.log("rating set")
+                            console.log("this.props.ratingFilterValue",this.props.ratingFilterValue)
+                            results = results.filter(review => review.rating == this.props.ratingFilterValue.value)
+                            console.log("results after rating filter", results)
+                        }
+                        // let results = this.props.reviewsData.filter(review => review.rating == this.props.ratingFilterValue)
+                        // let results = this.props.reviewsData.filter(review => {
+                        //     // console.log("review.rating",review.rating)
+                        //     // console.log("this.props.ratingFilterValue",this.props.ratingFilterValue)
+                        //     // console.log("this.props.ratingFilterValue.value",this.props.ratingFilterValue.value)
+                        //     if(review.rating == this.props.ratingFilterValue){
+                        //         // console.log("returning True")
+                        //         return true
+                        //     }
+                        //     // console.log("returning False")
+                        //     return false
+                        // })
+                        // console.log("results",results)
+                        if(this.props.toDateFilterValue){
+                            // console.log("inside toDate Filter!")
+                            // console.log("this.props.toDateFilterValue",this.props.toDateFilterValue)
+                            // console.log("isBefore:",moment(this.props.toDateFilterValue).add(1,"days"))
+                            // results = results.filter(review => moment(review.date).isBefore(moment(this.props.toDateFilterValue).add(1,"days").toDate()))
+                            // results = results.filter(review => moment(review.date).isBefore(moment(this.props.toDateFilterValue),"day"))
+                            // results = results.filter(review => {(()=>{
+                            //     // console.log("review.date", review.date)
+                            //     // console.log("this.props.toDateFilterValue",this.props.toDateFilterValue)
+                            //     // console.log("moment(review.date)", moment(review.date,'DD-MM-YYYY'))
+                            //     // console.log("moment(this.props.toDateFilterValue)",moment(this.props.toDateFilterValue,'DD-MM-YYYY').toDate())
+                            //     // console.log("moment(review.date).isBefore(moment(this.props.toDateFilterValue),'day')",moment(review.date,'DD-MM-YYYY').isBefore(moment(this.props.toDateFilterValue,'DD-MM-YYYY'),"day"))
+                            //     if(moment(review.date,'DD-MM-YYYY').isBefore(moment(this.props.toDateFilterValue,'DD-MM-YYYY'),"day")){
+                            //         console.log("Returning True toDate")
+                            //         return true
+                            //     }
+                            //     console.log("Returning False toDate")
+                            //     return false
+                            // })()})
+                            results = results.filter(review => {
+                                // console.log("review.date", review.date)
+                                // console.log("this.props.toDateFilterValue",this.props.toDateFilterValue)
+                                // console.log("moment(review.date)", moment(review.date,'DD-MM-YYYY'))
+                                // console.log("moment(this.props.toDateFilterValue)",moment(this.props.toDateFilterValue,'DD-MM-YYYY').toDate())
+                                // console.log("moment(review.date).isBefore(moment(this.props.toDateFilterValue),'day')",moment(review.date,'DD-MM-YYYY').isBefore(moment(this.props.toDateFilterValue,'DD-MM-YYYY'),"day"))
+                                if(moment(review.date,'DD-MM-YYYY').isBefore(moment(this.props.toDateFilterValue,'DD-MM-YYYY').add(1,"days"),"day")){
+                                    // console.log("Returning True toDate")
+                                    return true
+                                }
+                                // console.log("Returning False toDate")
+                                return false
+                            })
+                            // console.log("results after toDateFilter", results)
+                        }   
+                        if(this.props.fromDateFilterValue){
+                            // console.log("this.props.fromDateFilterValue",this.props.fromDateFilterValue)
+                            // console.log("isAfter:",moment(this.props.fromDateFilterValue).subtract(1,"days"))
+                            // results = results.filter(review => moment(review.date).isAfter(moment(this.props.fromDateFilterValue).subtract(1,"days").toDate()))
+                            // results = results.filter(review => moment(review.date,'DD-MM-YYYY').isAfter(moment(this.props.fromDateFilterValue,'DD-MM-YYYY'),"day"))
+                            // console.log("inside fromDate Filter!")
+                            // console.log("this.props.toDateFilterValue",this.props.toDateFilterValue)
+                            // console.log("isBefore:",moment(this.props.toDateFilterValue).add(1,"days"))
+                            // results = results.filter(review => moment(review.date).isBefore(moment(this.props.toDateFilterValue).add(1,"days").toDate()))
+                            // results = results.filter(review => moment(review.date).isBefore(moment(this.props.toDateFilterValue),"day"))
+                            results = results.filter(review => {
+                                // console.log("review.date", review.date)
+                                // console.log("this.props.toDateFilterValue",this.props.toDateFilterValue)
+                                // console.log("moment(review.date)", moment(review.date,'DD-MM-YYYY'))
+                                // console.log("moment(this.props.toDateFilterValue)",moment(this.props.toDateFilterValue,'DD-MM-YYYY').toDate())
+                                // console.log("moment(review.date).isBefore(moment(this.props.toDateFilterValue),'day')",moment(review.date,'DD-MM-YYYY').isBefore(moment(this.props.toDateFilterValue,'DD-MM-YYYY'),"day"))
+                                if(moment(review.date,'DD-MM-YYYY').isAfter(moment(this.props.fromDateFilterValue,'DD-MM-YYYY').subtract(1,"days"),"day")){
+                                    return true
+                                }
+                                return false
+                            })
+                            // console.log("results after fromDateFilter", results)
+                        }
                         return results.map((data, index) => {
                             return (
                                 <tr>
@@ -232,7 +314,7 @@ export default class ReviewsView extends React.Component {
             storeFilterValue: {label: "Acer PS", value: "Acer PS"},
             fromDateFilterValue: new Date(),
             toDateFilterValue: new Date(),
-            ratingFilterValue: 5,
+            ratingFilterValue: {label: 5,value:5},
             storeOptions: ["Acer PS"],
             reviewsData: [],
         };
@@ -263,7 +345,7 @@ export default class ReviewsView extends React.Component {
 
     setratingFilterValue(ratingFilterValue) {
         this.setState({
-            ratingFilterValue: ratingFilterValue.value
+            ratingFilterValue: ratingFilterValue
         })
         console.log("setratingFilterValue called! ratingFilterValue:", ratingFilterValue)
         console.log("this.state.ratingFilterValue", this.state.ratingFilterValue)
@@ -345,11 +427,11 @@ export default class ReviewsView extends React.Component {
                     <SpinnerAll/>
                     <div className="rowC">
                         <StoreFilter setstoreFilterValue={this.setstoreFilterValue} storeOptions={this.state.storeOptions} />
-                        {/* <DateFilter settoDateFilterValue={this.settoDateFilterValue} setfromDateFilterValue={this.setfromDateFilterValue} /> */}
+                        <DateFilter settoDateFilterValue={this.settoDateFilterValue} setfromDateFilterValue={this.setfromDateFilterValue} />
                         <RatingFilter setratingFilterValue={this.setratingFilterValue} />
                     </div>
                     <Spinner storeFilterValue = {this.state.storeFilterValue} />
-                    <FilterTable reviewsData={this.state.reviewsData} ratingFilterValue={this.state.ratingFilterValue} />
+                    <FilterTable reviewsData={this.state.reviewsData} ratingFilterValue={this.state.ratingFilterValue} fromDateFilterValue={this.state.fromDateFilterValue} toDateFilterValue={this.state.toDateFilterValue} />
                 </div>
             </div>
 

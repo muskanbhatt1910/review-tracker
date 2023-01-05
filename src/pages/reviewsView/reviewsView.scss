@@ -33,3 +33,10 @@
         transform: rotate(360deg);
     }
 }
+
+.datepicker {
+    display:flex; 
+    flex-direction:row;
+    gap: 50px;
+    margin: 4px;
+}
