@@ -1,0 +1,66 @@
+.spinner {
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #0e5af1 transparent #0d46f3 transparent;
+    border-radius: 50%;
+    animation: spin-anim 1.2s linear infinite;
+}
+.App {
+    background-color: white;
+  }
+  .spinner {
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #0e5af1 transparent #0d46f3 transparent;
+    border-radius: 50%;
+    animation: spin-anim 1.2s linear infinite;
+}
+
+  .Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .Auth-form {
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .Auth-form-content {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+  
+  .Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgba(16, 15, 15, 0.557);
+    font-weight: 800;
+  }
+  .Auth-form-heading {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(64, 95, 247);
+    font-weight: 800;
+  }
+  .error {
+    color: rgb(255, 0, 0);
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+  }
+  

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/home/Home";
+import Auth from "./pages/auth/auth";
 import TableView from "./pages/tableView/TableView";
 import ReviewsView from "./pages/reviewsView/ReviewsView";
 import Login from "./pages/login/Login";
@@ -19,6 +20,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="tableview">
               <Route index element={<TableView />} />
+            </Route>
+            <Route path="auth">
+              <Route index element={<Auth />} />
             </Route>
             <Route path="reviewsview">
               <Route index element={<ReviewsView />} />
