@@ -241,14 +241,14 @@ export default class Widget extends Component {
                                     {this.state.percentageData[detail.id] >= 0 ?
                                         <div className="percentage positive">
                                             <KeyboardArrowUpIcon />
-                                            {this.state.percentageData[detail.id].toFixed(2)}% over last week
-                                            {/* {detail.diff}% over last week */}
+                                            {this.state.percentageData[detail.id].toFixed(2)}% this week
+                                            {/* {detail.diff}% this week */}
                                         </div>
                                     :
                                         <div className="percentage negative">
                                             <KeyboardArrowDownIcon />
-                                            {-1*(this.state.percentageData[detail.id].toFixed(2))}% over last week
-                                            {/* {detail.diff}% over last week */}
+                                            {-1*(this.state.percentageData[detail.id].toFixed(2))}% this week
+                                            {/* {detail.diff}% this week */}
                                         </div>
                                     }
                                     

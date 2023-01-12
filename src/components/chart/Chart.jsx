@@ -197,7 +197,7 @@ export default class Chart extends Component {
           // // console.log("Chart Rerendered:", this.state.selectedTab)
           return getLabel(this.props.tabSel)
         })()}</div>
-        <ResponsiveContainer width="100%" aspect={3 / 1}>
+        <ResponsiveContainer width="100%" aspect={4 / 1}>
           {/* <AreaChart width={'100%'} height={250} data={this.state.chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="total_rating" x1="0" y1="0" x2="0" y2="1">
@@ -210,7 +210,8 @@ export default class Chart extends Component {
               <Tooltip />
               <Area type="monotone" dataKey="total" stroke="#8884d8" fillOpacity={1} fill="url(#total)" />
           </AreaChart>                  */}
-          <LineChart width={500} height={300} data={this.state.chartData} >
+          {/* <LineChart width={500} height={300} data={this.state.chartData} > */}
+          <LineChart data={this.state.chartData} >
             <XAxis dataKey="week_number" label={{value: 'Week Number', dy:10}} />
             <YAxis domain={(() => {
               if(this.props.tabSel == "total_rating" || this.props.tabSel == "avg_rating_week") {

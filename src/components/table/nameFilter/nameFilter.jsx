@@ -30,9 +30,9 @@ export default class NameFilter extends React.Component {
 
     handleChange = (value, event) => {
         let retVal
-        // console.log("Handle change called and value is :", value)
+        console.log("Handle change called and value is :", value)
         if (event.action === "select-option" && event.option.value === "*") {
-            // console.log("this.props.storeOptions", this.props.storeOptions)
+            console.log("this.props.storeOptions", this.props.storeOptions)
             retVal = [{ label: "All", value: "*" }, ...this.props.storeOptions]
             this.setState({
                 optionSelected: [...this.props.storeOptions]
@@ -80,22 +80,22 @@ export default class NameFilter extends React.Component {
             storeOptions: this.props.storeOptions,
             optionSelected: this.props.storeOptions
         });
-        // console.log("nameFilter mounted!")
-        // console.log("this.props.storeOptions", this.props.storeOptions)
-        // console.log("optionSelected", this.state.optionSelected)
+        console.log("nameFilter mounted!")
+        console.log("this.props.storeOptions", this.props.storeOptions)
+        console.log("optionSelected", this.state.optionSelected)
     }
     // componentDidUpdate(prevProps, prevState) {
     //     if (prevState.optionSelected !== this.state.optionSelected) {
-    //         // console.log("nameFilter updated!")
-    //         // console.log("this.props.storeOptions", this.props.storeOptions)
-    //         // console.log("optionSelected", this.state.optionSelected)
+    //         console.log("nameFilter updated!")
+    //         console.log("this.props.storeOptions", this.props.storeOptions)
+    //         console.log("optionSelected", this.state.optionSelected)
     //         this.setState({
     //             storeOptions: this.props.storeOptions,
     //             optionSelected: this.props.storeOptions
     //         });
-    //         // // console.log("nameFilter updated!")
-    //         // // console.log("this.props.storeOptions", this.props.storeOptions)
-    //         // // console.log("optionSelected", this.state.optionSelected)
+    //         // console.log("nameFilter updated!")
+    //         // console.log("this.props.storeOptions", this.props.storeOptions)
+    //         // console.log("optionSelected", this.state.optionSelected)
     //     }
     // }
 

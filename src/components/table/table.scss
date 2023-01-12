@@ -1,0 +1,22 @@
+.table-week{
+    text-align: center;
+    width: 100%;
+    table-layout: auto;
+    thead{
+        text-align: center;
+        // padding-bottom: 500px;
+        // height: 40px;
+        // border-bottom: 1px solid grey;
+    }
+    th{
+        padding-bottom: 5px;
+        margin-bottom: 50px;
+    }
+    td{
+        // text-align: center;
+        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+        height: 35px;
+        font-size: 14px;
+    }
+}

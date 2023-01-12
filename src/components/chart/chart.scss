@@ -1,11 +1,13 @@
 .chart {
-    flex: 7;
+    flex: 1;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+    box-shadow: 2px 4px 10px 1px rgba(159, 159, 159, 0.47);
     padding: 10px;
     color: gray;
     display: flex;
+    margin-left: 25px;
     flex-direction: column;
+    width: 950px;
 
     .title {
         margin-bottom: 20px;

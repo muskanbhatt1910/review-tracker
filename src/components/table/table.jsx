@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
+import './table.scss'
 
 export default class FilterTable extends React.Component {
   constructor(props) {
@@ -46,14 +47,14 @@ export default class FilterTable extends React.Component {
 
   render() {
     return (
-      <table className="table">
+      <table className="table-week">
         <thead>
           <tr>
             <th>S.N</th>
             <th>Week</th>
             <th>Store</th>
-            <th>Rating for this week</th>
-            <th>New reviews in this week</th>
+            <th>Rating for the week</th>
+            <th>New reviews in the week</th>
           </tr>
         </thead>
         <tbody>
@@ -179,7 +180,7 @@ export default class FilterTable extends React.Component {
                   <td>{index + 1}</td>
                   <td>{data.week_number}</td>
                   <td>{data.store_name}</td>
-                  <td>{data.avg_rating_week.toFixed(2)}</td>
+                  <td>{data.avg_rating_week}</td>
                   <td>{data.total_reviews_week}</td>
                 </tr>
               );

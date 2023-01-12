@@ -291,12 +291,12 @@ class FilterTable extends React.Component {
                         return results.map((data, index) => {
                             return (
                                 <tr>
-                                    <td>{index + 1}</td>
-                                    <td>{data.date}</td>
-                                    <td>{data.store_name}</td>
-                                    <td>{data.rating}</td>
-                                    <td>{data.comment}</td>
-                                    <td>{data.reviewer}</td>
+                                    <td class="Sn">{index + 1}</td>
+                                    <td class="Date">{data.date}</td>
+                                    <td class="Store">{data.store_name}</td>
+                                    <td class="Rating">{data.rating}</td>
+                                    <td class="Review">{data.comment}</td>
+                                    <td class="Reviewer">{data.reviewer}</td>
                                 </tr>
                             );
                         });

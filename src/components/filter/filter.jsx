@@ -59,7 +59,7 @@ export default class FilteredData extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            optionSelected: [],
+            optionSelected: {label: "Acer PS", value: "Acer PS"},
             storeOptions: [],
             tabSel: "total_rating"
         };
@@ -74,9 +74,9 @@ export default class FilteredData extends Component {
                     storeOptions: data
                 });
                 // // console.log("Store Options: ", this.state.storeOptions);
-                this.setState({
-                    optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
-                });
+                // this.setState({
+                //     optionSelected: [{ label: "All", value: "*" }, ...this.state.storeOptions]
+                // });
 
             })
             .catch((err) => {
@@ -107,6 +107,12 @@ export default class FilteredData extends Component {
     //                 // // console.log(err.message);
     //             });
     // }
+
+    handleChange2 = (value) => {
+        this.setState({
+            optionSelected: value
+        });
+    };
 
     handleChange = (value, event) => {
         // // console.log("event action: ", event)
@@ -181,15 +187,16 @@ export default class FilteredData extends Component {
                     </div>
                 </span> */}
                 <Spinner />
-
+                <div class="top-bar">
+                <span class="label-title">Select Store:</span>
                 <span
-                    class="d-inline-block"
+                    className="d-inline-block"
                     data-toggle="popover"
                     data-trigger="focus"
                     data-content="Please selecet account(s)"
                 >
 
-                    <ReactSelect
+                    {/* <ReactSelect
                         options={[{ label: "All", value: "*" }, ...this.state.storeOptions]}
                         // options={this.state.storeOptions}
                         isMulti
@@ -201,10 +208,16 @@ export default class FilteredData extends Component {
                         onChange={this.handleChange}
                         allowSelectAll={true}
                         value={this.state.optionSelected}
-                        defa
+                    /> */}
+                    <ReactSelect
+                        options = {this.state.storeOptions}
+                        onChange={this.handleChange2}
+                        value={this.state.optionSelected}
                     />
                 </span>
-                <Widget tabSel={this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} />
+                </div>
+                <Widget tabSel={this.state.tabSel} selectedStores={this.convertStoresFormat([this.state.optionSelected])} />
+                {/* <Widget tabSel={this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Chart tabSel = {this.state.tabSel} selectedStores={this.convertStoresFormat(this.state.optionSelected.filter(o => o.value !== "*"))} /> */}
                 {/* <Widget selectedStore={
                     () => {

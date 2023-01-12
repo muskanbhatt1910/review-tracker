@@ -24,12 +24,12 @@ const Sidebar = () => {
         <div className='top'>
           <span className='logo'>REVIEW TRACKER</span>
         </div>
-        <Navbar expand="lg" bg="light">
+        <Navbar expand="lg">
             <Container>
               {/* <Navbar.Brand href="#home">Select View:</Navbar.Brand> */}
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                {/* <Nav className="me-auto">
                   <Nav.Link href="/">
                     <Button variant="primary">CHART VIEW</Button>{' '}
                   </Nav.Link>
@@ -39,7 +39,12 @@ const Sidebar = () => {
                   <Nav.Link href="reviewsview">
                     <Button variant="primary">REVIEWS</Button>{' '}
                   </Nav.Link>
-                </Nav>
+                </Nav> */}
+                <div className='Navlist'>
+                    <a href="/">Chart</a>
+                    <a href="tableview">Table View</a>
+                    <a href="reviewsview">Reviews</a>
+                </div>
               </Navbar.Collapse>
             </Container>
           </Navbar>

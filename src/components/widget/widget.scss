@@ -1,12 +1,14 @@
 .widget {
-    display: flex;
-    flex: 1px;
+    // display: flex;
+    // flex: 1;
+    width: 210px;
     justify-content: space-between;
-    padding: 10px;
+    padding: 7px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
     box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
     border-radius: 10px;
     height: 100px;
+    margin-inline: 7px;
     cursor: pointer;
 
     .left {
@@ -37,21 +39,21 @@
     }
 
     .counter {
-        font-size: 28px;
-        font-weight: 300;
+        font-size: 24px;
+        font-weight: 400;
     }
 
     .link {
         width: max-content;
-        font-size: 12px;
+        font-size: 1px;
         border-bottom: 1px solid grey;
     }
 
     .percentage {
         display: flex;
         align-items: center;
-        font-style: 14px;
-
+        font-size: 12px;
+        font-weight: 650;
         &.positive {
             color: green;
         }
@@ -127,7 +129,7 @@
 //     .percentage {
 //         display: flex;
 //         align-items: center;
-//         font-style: 14px;
+//         font-size: 14px;
 
 //         &.positive {
 //             color: green;
@@ -152,14 +154,16 @@
 .widgetActive {
     background-color: rgb(173, 245, 223);
 
-    display: flex;
-    flex: 1px;
+    // display: flex;
+    // flex: 1px;
+    width: 210px;
     justify-content: space-between;
-    padding: 10px;
+    padding: 7px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
     box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
     border-radius: 10px;
     height: 100px;
+    margin-inline: 7.5px;
     cursor: pointer;
 
     .left {
@@ -190,8 +194,9 @@
     }
 
     .counter {
-        font-size: 28px;
-        font-weight: 300;
+        font-size: 24px;
+        font-weight: 400;
+        
     }
 
     .link {
@@ -203,7 +208,8 @@
     .percentage {
         display: flex;
         align-items: center;
-        font-style: 14px;
+        font-size: 12px;
+        font-weight: 650;
 
         &.positive {
             color: green;
