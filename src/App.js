@@ -17,12 +17,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route index element={<Auth />} />
             <Route path="tableview">
               <Route index element={<TableView />} />
             </Route>
-            <Route path="auth">
-              <Route index element={<Auth />} />
+            <Route path="home">
+              <Route index element={<Home />} />
             </Route>
             <Route path="reviewsview">
               <Route index element={<ReviewsView />} />

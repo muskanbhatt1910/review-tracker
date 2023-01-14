@@ -5,17 +5,19 @@ import "./auth.scss"
 import { Component } from "react";
 // import Home from "../home/Home";
 import { useNavigate } from "react-router-dom";
+import { ReactSession } from 'react-client-session';
+import Home from "../home/Home";
 
 const Spinner = () => {
 
     return (
         <div>
-                <span className="container">
-                    <div className="loader-container">
-                        <div className="spinner"></div>
-                    </div>
-                </span>
-    
+            <span className="container">
+                <div className="loader-container">
+                    <div className="spinner"></div>
+                </div>
+            </span>
+
         </div>
     );
 };
@@ -178,7 +180,11 @@ class AuthComponent extends Component {
                     this.setState({
                         is_user_authorized: true
                     });
-                    this.props.navigate('/');
+                    window.localStorage.setItem("is_user_authorized", data.is_user_authorized)
+                    // ReactSession.setStoreType("localStorage");
+                    // ReactSession.set("is_user_authorized", data.is_user_authorized);
+                    // ReactSession.set("User_ID", data.User_ID);
+                    this.props.navigate('/home');
                     // console.log("data user auth", data.is_user_authorized)
                     // console.log("stae user auth", this.state.is_user_authorized)
                 }
@@ -223,60 +229,69 @@ class AuthComponent extends Component {
     // }
 
     render() {
-        return (
-            <div >
-                {this.state.loading ?
-                <Spinner />
-                :
-                null
-            }
-            <div className="Auth-form-container">
-                <div className="Auth-form">
-                    <div className="Auth-form-content">
-                        <h1 className="Auth-form-heading">REVIEW TRACKER</h1>
-                        <h3 className="Auth-form-title">Log In</h3>
-                        <h5 className="error">{this.state.errorText}</h5>
-                        {/* <div className="text-center">
+        console.log("ReactSession.get('is_user_authorized')", window.localStorage.getItem("is_user_authorized"))
+        if (window.localStorage.getItem("is_user_authorized") == "true") {
+            // if (ReactSession.get("is_user_authorized")) {
+            return (
+                <Home />
+            )
+        }
+        else {
+            return (
+                <div >
+                    {this.state.loading ?
+                        <Spinner />
+                        :
+                        null
+                    }
+                    <div className="Auth-form-container">
+                        <div className="Auth-form">
+                            <div className="Auth-form-content">
+                                <h1 className="Auth-form-heading">REVIEW TRACKER</h1>
+                                <h3 className="Auth-form-title">Log In</h3>
+                                <h5 className="error">{this.props.message}</h5>
+                                <h5 className="error">{this.state.errorText}</h5>
+                                {/* <div className="text-center">
                       Not registered yet?{" "}
                       <span className="link-primary" onClick={changeAuthMode}>
                         Sign Up
                       </span>
                     </div> */}
-                        <div className="form-group mt-3">
-                            <label>Username</label>
-                            <input
-                                type="text"
-                                className="form-control mt-1"
-                                placeholder="Enter username"
-                                value={this.state.username}
-                                onChange={this.handleUsernameChange}
-                                name="username"
-                            />
-                        </div>
-                        <div className="form-group mt-3">
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                className="form-control mt-1"
-                                placeholder="Enter password"
-                                value={this.state.password}
-                                onChange={this.handlePasswordChange}
-                                name="password"
-                            />
-                        </div>
-                        <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary" onClick={this.submitUser}>
-                                Submit
-                            </button>
-                            {/* <input type="submit" value="Submit" /> */}
-                        </div>
-                        {/* <p className="text-center mt-2">
+                                <div className="form-group mt-3">
+                                    <label>Username</label>
+                                    <input
+                                        type="text"
+                                        className="form-control mt-1"
+                                        placeholder="Enter username"
+                                        value={this.state.username}
+                                        onChange={this.handleUsernameChange}
+                                        name="username"
+                                    />
+                                </div>
+                                <div className="form-group mt-3">
+                                    <label>Password</label>
+                                    <input
+                                        type="password"
+                                        className="form-control mt-1"
+                                        placeholder="Enter password"
+                                        value={this.state.password}
+                                        onChange={this.handlePasswordChange}
+                                        name="password"
+                                    />
+                                </div>
+                                <div className="d-grid gap-2 mt-3">
+                                    <button type="submit" className="btn btn-primary" onClick={this.submitUser}>
+                                        Submit
+                                    </button>
+                                    {/* <input type="submit" value="Submit" /> */}
+                                </div>
+                                {/* <p className="text-center mt-2">
                       Forgot <a href="#">password?</a>
                     </p> */}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            {/* // <div>
+                    {/* // <div>
             //     <form onSubmit={this.submitUser}>
             //         <label>
             //             Name:
@@ -285,8 +300,9 @@ class AuthComponent extends Component {
             //         <input type="submit" value="Submit" />
             //     </form>
             // </div> */}
-            </div>
-        )
+                </div>
+            )
+        }
     }
 }
 

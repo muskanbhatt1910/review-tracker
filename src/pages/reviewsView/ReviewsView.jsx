@@ -13,6 +13,8 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { mockComponent } from "react-dom/test-utils";
 import Moment from 'react-moment';
 import moment from "moment";
+import { ReactSession } from 'react-client-session';
+import Auth from '../auth/auth'; 
 
 const Spinner = (props) => {
     const [loading, setLoading] = useState(false);
@@ -420,6 +422,14 @@ export default class ReviewsView extends React.Component {
     }
 
     render() {
+        console.log("ReactSession.get('is_user_authorized')",window.localStorage.getItem("is_user_authorized"))
+        if(window.localStorage.getItem("is_user_authorized") == "false"){
+        // if (ReactSession.get("is_user_authorized")) {
+            return (
+              <Auth message="Please login!"/>
+            )
+          }
+          else {
         return (
             <div className="home">
                 <Sidebar />
@@ -435,7 +445,7 @@ export default class ReviewsView extends React.Component {
                 </div>
             </div>
 
-        )
+        )}
     }
 }
 

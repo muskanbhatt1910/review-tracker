@@ -18,6 +18,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+function logoutFunc(){
+  window.localStorage.setItem("is_user_authorized",false)
+}
+
+const Logout = () => {
+  return(
+    <a href="/" onClick={logoutFunc}>Logout</a>
+  )
+}
+
 const Sidebar = () => {
   return (
     <div className='sidebar'>
@@ -41,10 +51,16 @@ const Sidebar = () => {
                   </Nav.Link>
                 </Nav> */}
                 <div className='Navlist'>
-                    <a href="/">Chart</a>
+                    <a href="home">Chart</a>
                     <a href="tableview">Table View</a>
                     <a href="reviewsview">Reviews</a>
+                    {/* <button onClick={window.localStorage.setItem("is_user_authorized",false)}>Logout</button>
+                    <button onClick={()=>{
+                      window.localStorage.setItem("is_user_authorized",false)
+                    }}>Logout</button> */}
+                    <Logout/>
                 </div>
+                
               </Navbar.Collapse>
             </Container>
           </Navbar>

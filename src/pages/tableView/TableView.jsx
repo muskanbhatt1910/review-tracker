@@ -6,6 +6,8 @@ import FilterTable from '../../components/table/table'
 import './tableView.scss'
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from 'react';
+import { ReactSession } from 'react-client-session';
+import Auth from '../auth/auth';
 
 const Spinner = () => {
   const [loading, setLoading] = useState(false);
@@ -93,6 +95,14 @@ export default class TableView extends React.Component {
   }
 
   render() {
+    console.log("ReactSession.get('is_user_authorized')",window.localStorage.getItem("is_user_authorized"))
+        if(window.localStorage.getItem("is_user_authorized") == "false"){
+        // if (ReactSession.get("is_user_authorized")) {
+            return (
+              <Auth message="Please login!"/>
+            )
+          }
+          else {
     return (
       <div className="home">
         <Sidebar />
@@ -106,7 +116,7 @@ export default class TableView extends React.Component {
           </div>
         </div>
       
-    )
+    )}
   }
 }
 
