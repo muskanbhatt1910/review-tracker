@@ -139,13 +139,13 @@ class AuthComponent extends Component {
     }
 
     handleUsernameChange = (event) => {
-        // console.log("username value", value)
+        // // console.log("username value", value)
         this.setState({
             username: event.target.value
         });
-        // console.log("username", this.state.username)
-        // console.log("username value", value)
-        // console.log("username event", event)
+        // // console.log("username", this.state.username)
+        // // console.log("username value", value)
+        // // console.log("username event", event)
     };
 
     handlePasswordChange = (event) => {
@@ -155,7 +155,7 @@ class AuthComponent extends Component {
     };
 
     submitUser = () => {
-        console.log("Submit user", this.state.username, ":", this.state.password)
+        // console.log("Submit user", this.state.username, ":", this.state.password)
         this.setState({
             loading: true
         });
@@ -175,7 +175,7 @@ class AuthComponent extends Component {
                 this.setState({
                     loading: false
                 });
-                console.log("data", data)
+                // console.log("data", data)
                 if (data.is_user_authorized) {
                     this.setState({
                         is_user_authorized: true
@@ -185,8 +185,8 @@ class AuthComponent extends Component {
                     // ReactSession.set("is_user_authorized", data.is_user_authorized);
                     // ReactSession.set("User_ID", data.User_ID);
                     this.props.navigate('/home');
-                    // console.log("data user auth", data.is_user_authorized)
-                    // console.log("stae user auth", this.state.is_user_authorized)
+                    // // console.log("data user auth", data.is_user_authorized)
+                    // // console.log("stae user auth", this.state.is_user_authorized)
                 }
                 else {
                     this.setState({
@@ -198,7 +198,7 @@ class AuthComponent extends Component {
                 }
             })
             .catch((err) => {
-                console.log(err.message);
+                // console.log(err.message);
             });
 
         // if(this.state.is_user_authorized){
@@ -229,7 +229,7 @@ class AuthComponent extends Component {
     // }
 
     render() {
-        console.log("ReactSession.get('is_user_authorized')", window.localStorage.getItem("is_user_authorized"))
+        // console.log("ReactSession.get('is_user_authorized')", window.localStorage.getItem("is_user_authorized"))
         if (window.localStorage.getItem("is_user_authorized") == "true") {
             // if (ReactSession.get("is_user_authorized")) {
             return (

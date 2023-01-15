@@ -11,9 +11,9 @@ import Auth from '../auth/auth'
 
 
 const Home = () => {
-  console.log("ReactSession.get('is_user_authorized')", window.localStorage.getItem("is_user_authorized"))
+  // console.log("ReactSession.get('is_user_authorized')", window.localStorage.getItem("is_user_authorized"))
   if (window.localStorage.getItem("is_user_authorized") == "false") {
-    console.log("Imma entered")
+    // console.log("Imma entered")
     // if (ReactSession.get("is_user_authorized")) {
     return (
       <Auth message="Please login!" />

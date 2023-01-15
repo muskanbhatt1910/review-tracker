@@ -21,7 +21,7 @@ export default class FilterTable extends React.Component {
   };
 
   getStores = (nameFilterValue) => {
-    // console.log("nameFilterValue", nameFilterValue)
+    // // console.log("nameFilterValue", nameFilterValue)
     let stores = []
     nameFilterValue.forEach((store) => {
       stores.push(store.value)
@@ -82,12 +82,12 @@ export default class FilterTable extends React.Component {
             )()
           }
           { (() => {
-            // console.log("Table created!, data passed = ", this.props.historicalData)
-            // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
+            // // console.log("Table created!, data passed = ", this.props.historicalData)
+            // // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
             // let weeks = this.props.weekFilterValue.map((week) => week.value);
-            // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
+            // // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
             let stores = this.props.nameFilterValue.map((store) => store.value);
-            // console.log("stores",stores)
+            // // console.log("stores",stores)
             // .filter(row => weeks.includes(row.week_number))
             // filter(row => stores.includes(row.store_name)).
             const dataset = this.props.historicalData
@@ -116,12 +116,12 @@ export default class FilterTable extends React.Component {
             })
           })() } */}
           {/* {(()=>{
-            // console.log("I am called here!")
-            // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
-            // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
+            // // console.log("I am called here!")
+            // // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
+            // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
             if((!this.props.nameFilterValue || this.props.nameFilterValue.length<=0) && (!this.props.weekFilterValue || this.props.weekFilterValue.length <=0)){
-              // console.log("Entered here!")
-              // console.log("historicalData", this.props.historicalData)
+              // // console.log("Entered here!")
+              // // console.log("historicalData", this.props.historicalData)
               this.props.historicalData.map((data,index) => {
                 return (
                   <tr>
@@ -160,16 +160,16 @@ export default class FilterTable extends React.Component {
             );
           })} */}
           {(() => {
-            // // console.log("Table rerendered")
-            // // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
-            // // console.log("this.props.nameFilterValue.length",this.props.nameFilterValue.length)
-            // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
-            // console.log("this.props.weekFilterValue.length",this.props.weekFilterValue.length)
+            // // // console.log("Table rerendered")
+            // // // console.log("this.props.nameFilterValue",this.props.nameFilterValue)
+            // // // console.log("this.props.nameFilterValue.length",this.props.nameFilterValue.length)
+            // // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
+            // // console.log("this.props.weekFilterValue.length",this.props.weekFilterValue.length)
             let results = this.props.historicalData
             if (this.props.nameFilterValue && this.props.nameFilterValue.length > 0) {
               results = results.filter(row => this.getStores(this.props.nameFilterValue).includes(row.store_name));
             }
-            // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
+            // // console.log("this.props.weekFilterValue",this.props.weekFilterValue)
             if (this.props.weekFilterValue && !Array.isArray(this.props.weekFilterValue) && this.props.weekFilterValue.value !== "*") {
                 results = results.filter(row => this.getWeeks(this.props.weekFilterValue).includes(row.week_number));
             }
@@ -187,7 +187,7 @@ export default class FilterTable extends React.Component {
               });
 
             // if (this.props.nameFilterValue && this.props.nameFilterValue.length > 0 && this.props.weekFilterValue) {
-            //   // console.log("if called!")
+            //   // // console.log("if called!")
             //   const ans = this.props.historicalData.filter(row => this.getStores(this.props.nameFilterValue).includes(row.store_name)).filter(row => this.getWeeks(this.props.weekFilterValue).includes(row.week_number)).map((data, index) => {
             //     return (
             //       <tr>
@@ -202,7 +202,7 @@ export default class FilterTable extends React.Component {
             //   return ans
             // }
             // else {
-            //   // console.log("else called!")
+            //   // // console.log("else called!")
             //   let ans2 = this.props.historicalData.map((data, index) => {
             //     return (
             //       <tr>
@@ -214,7 +214,7 @@ export default class FilterTable extends React.Component {
             //       </tr>
             //     );
             //   })
-            //   // console.log("ans2", ans2)
+            //   // // console.log("ans2", ans2)
             //   return ans2
             // }
           })()}

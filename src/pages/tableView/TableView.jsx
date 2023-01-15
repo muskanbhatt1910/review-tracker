@@ -68,7 +68,7 @@ export default class TableView extends React.Component {
         });
       })
       .catch((err) => {
-        // console.log(err.message);
+        // // console.log(err.message);
       });
 
     fetch("https://matrik.pythonanywhere.com/historical_data/")
@@ -87,15 +87,15 @@ export default class TableView extends React.Component {
 
       })
       .catch((err) => {
-        // console.log(err.message);
+        // // console.log(err.message);
       });
   }
   componentDidUpdate() {
-    // console.log("Table element state updated! weekFilterValue", this.state.weekFilterValue)
+    // // console.log("Table element state updated! weekFilterValue", this.state.weekFilterValue)
   }
 
   render() {
-    console.log("ReactSession.get('is_user_authorized')",window.localStorage.getItem("is_user_authorized"))
+    // console.log("ReactSession.get('is_user_authorized')",window.localStorage.getItem("is_user_authorized"))
         if(window.localStorage.getItem("is_user_authorized") == "false"){
         // if (ReactSession.get("is_user_authorized")) {
             return (
@@ -107,7 +107,7 @@ export default class TableView extends React.Component {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Spinner />
+          {/* <Spinner /> */}
             <div className="rowC">
               <NameFilter setnameFilterValue={this.setnameFilterValue} storeOptions={this.state.storeOptions} />
               <WeekFilter setweekFilterValue={this.setweekFilterValue} weekList={this.state.weekList} />

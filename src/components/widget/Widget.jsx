@@ -14,13 +14,13 @@ import Chart from '../chart/Chart.jsx';
 
 export function globalFilterChartData(selectedStores, pariData) {
 
-    // console.log("Imma called here!")
+    // // console.log("Imma called here!")
 
     let temp = JSON.parse(JSON.stringify(pariData))
-    // console.log("temp: ", temp)
+    // // console.log("temp: ", temp)
     temp = temp.filter(o => selectedStores.includes(o.store_name))
-    // console.log("filterChartData selectedStores", selectedStores)
-    // console.log("filterChartData selectedStores temp:", temp)
+    // // console.log("filterChartData selectedStores", selectedStores)
+    // // console.log("filterChartData selectedStores temp:", temp)
 
     // const data = [
     //   { week_number: '1',total_rating: '4.5', avg_rating_week: '3.9', total_reviews: '350', total_reviews_week: '10' },
@@ -63,7 +63,7 @@ export function globalFilterChartData(selectedStores, pariData) {
         }
     })
 
-    // console.log("chart data:globalFilterChartData ", chart_data)
+    // // console.log("chart data:globalFilterChartData ", chart_data)
     chart_data = chart_data.sort((a, b) => a.week_number - b.week_number)
     return chart_data
 
@@ -90,9 +90,9 @@ export default class Widget extends Component {
     }
 
     getPercentageData = (selectedStores) => {
-        // console.log("Unlucky me!")
+        // // console.log("Unlucky me!")
         let chart_data = globalFilterChartData(selectedStores, this.state.pariData)
-        // console.log("chart_data: ", chart_data)
+        // // console.log("chart_data: ", chart_data)
         chart_data = chart_data.sort((a, b) => b.week_number - a.week_number)
         let tempPercentageData = {
             "total_rating": 0,
@@ -100,17 +100,17 @@ export default class Widget extends Component {
             "avg_rating_week": 0,
             "total_reviews_week": 0
         }
-        // console.log("tempPercentageData",tempPercentageData)
+        // // console.log("tempPercentageData",tempPercentageData)
         if(chart_data.length>=2){
-            // console.log("chart_data.length>=2")
-            // console.log("chart_data:****", chart_data)
+            // // console.log("chart_data.length>=2")
+            // // console.log("chart_data:****", chart_data)
             tempPercentageData = {
                 "total_rating": ((chart_data[0].total_rating-chart_data[1].total_rating)/chart_data[1].total_rating)*100,
                 "total_reviews": ((chart_data[0].total_reviews-chart_data[1].total_reviews)/chart_data[1].total_reviews)*100,
                 "avg_rating_week": ((chart_data[0].avg_rating_week-chart_data[1].avg_rating_week)/chart_data[1].avg_rating_week)*100,
                 "total_reviews_week": ((chart_data[0].total_reviews_week-chart_data[1].total_reviews_week)/chart_data[1].total_reviews_week)*100
             }
-            // console.log("tempPercentageData&&&&&",tempPercentageData)
+            // // console.log("tempPercentageData&&&&&",tempPercentageData)
             // this.setState({
             //     percentageData: tempPercentageData
             // });
@@ -119,14 +119,14 @@ export default class Widget extends Component {
                     tempPercentageData[key1] = 0
                 }
             });
-            // console.log("Lucky me!")
+            // // console.log("Lucky me!")
         }    
         return tempPercentageData    
     }
     
 
     componentDidMount() {
-        // console.log("componenetDidMount():", this.props.selectedStores)
+        // // console.log("componenetDidMount():", this.props.selectedStores)
         fetch("https://matrik.pythonanywhere.com/widget/", {
             method: 'POST',
             body: JSON.stringify({
@@ -146,7 +146,7 @@ export default class Widget extends Component {
 
             })
             .catch((err) => {
-                // console.log(err.message);
+                // // console.log(err.message);
             });
 
         fetch("https://matrik.pythonanywhere.com/historical_data/")
@@ -169,7 +169,7 @@ export default class Widget extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.selectedStores !== this.props.selectedStores) {
-            // console.log("componenetDidUpdate(): if called", this.props.selectedStores)
+            // // console.log("componenetDidUpdate(): if called", this.props.selectedStores)
             fetch("https://matrik.pythonanywhere.com/widget/", {
                 method: 'POST',
                 body: JSON.stringify({
@@ -190,27 +190,27 @@ export default class Widget extends Component {
                     });
                 })
                 .catch((err) => {
-                    // console.log(err.message);
-                    // console.log("widget not working")
+                    // // console.log(err.message);
+                    // // console.log("widget not working")
                 });
         }
         else {
-            // console.log("componenetDidUpdate(): else called", this.props.selectedStores)
+            // // console.log("componenetDidUpdate(): else called", this.props.selectedStores)
         }
     }
 
     handleClick = (tab) => {
-        // // console.log("Mouse Enter",id)
-        // // console.log("onMouseEnter Tab: ", tab)        
+        // // // console.log("Mouse Enter",id)
+        // // // console.log("onMouseEnter Tab: ", tab)        
         // SetSelectedTab(tab)
-        // // console.log("func called")
+        // // // console.log("func called")
         // setTabSel(tab)
         this.setState({
             myTab: tab
         });
     }
     outHandler = () => {
-        // console.log("onMouseLeave")
+        // // console.log("onMouseLeave")
     }
     render() {
 
@@ -225,8 +225,8 @@ export default class Widget extends Component {
                                 // <div className='widget'
 
                                 onClick={() => {
-                                    // console.log("Muskan")
-                                    // console.log("detail id", detail.id)
+                                    // // console.log("Muskan")
+                                    // // console.log("detail id", detail.id)
                                     this.handleClick(detail.id)
                                 }}
                                 onMouseEnter

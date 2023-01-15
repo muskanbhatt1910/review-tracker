@@ -73,11 +73,11 @@ export function SetSelectedTab(tab) {
   this.setState({
     selectedTab: tab
   });
-  // console.log("setSelectedTab called!")
+  // // console.log("setSelectedTab called!")
   this.state.selectedTab = tab
-  // console.log("SetSelectedTab function called, selectedTab: ",this.state.selectedTab)
+  // // console.log("SetSelectedTab function called, selectedTab: ",this.state.selectedTab)
   // this.forceUpdate()
-  // // console.log("chart updated, selectedTab", this.state.selectedTab)
+  // // // console.log("chart updated, selectedTab", this.state.selectedTab)
 };
 
 export default class Chart extends Component {
@@ -97,10 +97,10 @@ export default class Chart extends Component {
   filterChartData = (selectedStores) => {
     // var temp = {...this.state.pariDataChart}
     var temp = JSON.parse(JSON.stringify(this.state.pariDataChart))
-    // console.log("temp: ",temp)
+    // // console.log("temp: ",temp)
     temp = temp.filter(o => selectedStores.includes(o.store_name))
-    // console.log("filterChartData selectedStores", selectedStores)
-    // console.log("filterChartData selectedStores temp:", temp)
+    // // console.log("filterChartData selectedStores", selectedStores)
+    // // console.log("filterChartData selectedStores temp:", temp)
 
     // const data = [
     //   { week_number: '1',total_rating: '4.5', avg_rating_week: '3.9', total_reviews: '350', total_reviews_week: '10' },
@@ -143,7 +143,7 @@ export default class Chart extends Component {
       }
     })
 
-    // console.log("chart data:", chart_data)
+    // // console.log("chart data:", chart_data)
     chart_data = chart_data.sort((a, b) => a.week_number - b.week_number)
     return chart_data
     // return chart_data
@@ -151,7 +151,7 @@ export default class Chart extends Component {
 
 
   componentDidMount() {
-    // console.log("chart mounted")
+    // // console.log("chart mounted")
     fetch("https://matrik.pythonanywhere.com/historical_data/" )
       .then((response) => response.json())
       .then((data) => {
@@ -167,26 +167,26 @@ export default class Chart extends Component {
         this.setState({
           chartData: this.filterChartData(this.props.selectedStores)
         });
-        // console.log("chartData:", this.state.chartData)
+        // // console.log("chartData:", this.state.chartData)
       })
       .catch((err) => {
-        // console.log(err.message);
-        // console.log("Error in fetching hist. data!")
+        // // console.log(err.message);
+        // // console.log("Error in fetching hist. data!")
       });
   }
 
   componentDidUpdate(prevProps,prevState) {
-    // console.log("chart updated!")
+    // // console.log("chart updated!")
     if (prevProps.selectedStores !== this.props.selectedStores) {
-      // // console.log("if entered this.componentDidUpdate")
-      // // console.log("this.props.selectedStores",this.props.selectedStores)
-      // // console.log("this.filterChartData(this.props.selectedStores)",this.filterChartData(this.props.selectedStores))
+      // // // console.log("if entered this.componentDidUpdate")
+      // // // console.log("this.props.selectedStores",this.props.selectedStores)
+      // // // console.log("this.filterChartData(this.props.selectedStores)",this.filterChartData(this.props.selectedStores))
       this.setState({
         chartData: this.filterChartData(this.props.selectedStores)
       });
     }
     
-    // // console.log("chartData2:", this.state.chartData)
+    // // // console.log("chartData2:", this.state.chartData)
   }
 
   render() {
@@ -194,7 +194,7 @@ export default class Chart extends Component {
       <div className='chart'>
         {/* <div className="title">{getLabel(this.state.selectedTab)}</div> */}
         <div className="title">{(()=>{
-          // // console.log("Chart Rerendered:", this.state.selectedTab)
+          // // // console.log("Chart Rerendered:", this.state.selectedTab)
           return getLabel(this.props.tabSel)
         })()}</div>
         <ResponsiveContainer width="100%" aspect={4 / 1}>
@@ -231,7 +231,7 @@ export default class Chart extends Component {
             <Line 
               type="monotone" 
               // dataKey={(() => {
-              //   // console.log("LineChart rerendered, selectedTab: ", this.state.selectedTab)
+              //   // // console.log("LineChart rerendered, selectedTab: ", this.state.selectedTab)
               //   return this.state.selectedTab
               // })()} 
               dataKey={this.props.tabSel}
